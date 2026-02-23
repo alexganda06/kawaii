@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kawaii Romantic Bear</title>
+<style>
+  /* Base & Background */
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffcce6 100%);
+    font-family: 'Comic Sans MS', 'Nunito', 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Floating Hearts */
+  .heart {
+    position: absolute;
+    color: #ff99cc;
+    opacity: 0.6;
+    animation: floatUp linear infinite;
+    z-index: 0;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+
+  /* Glowing Particles / Sparkles */
+  .sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
+    animation: twinkle ease-in-out infinite;
+    z-index: 0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  /* Falling Petals */
+  .petal {
+    position: absolute;
+    background: #ffb3d9;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px 0 15px 0;
+    opacity: 0;
+    animation: fall linear infinite;
+    z-index: 2;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Text Animations */
+  .text-container {
+    position: absolute;
+    top: 15%;
+    text-align: center;
+    color: #d63384;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+  }
+  .msg {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-out;
+  }
+  .msg.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Bear Animation Container */
+  #bear-container {
+    position: relative;
+    transform: translateX(-60vw); /* Starts off-screen left */
+    animation: walkIn 4s ease-out forwards;
+    z-index: 5;
+  }
+  
+  .bear-svg {
+    width: 250px;
+    height: 300px;
+    animation: bounce 0.6s infinite alternate; /* Soft bouncy walk */
+    transform-origin: bottom center;
+  }
+
+  /* Keyframes for Bear Actions */
+  @keyframes walkIn {
+    to { transform: translateX(0); } /* Walks to center */
+  }
+  @keyframes bounce {
+    from { transform: translateY(0) scaleY(1); }
+    to { transform: translateY(-20px) scaleY(1.02); }
+  }
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes sway {
+    from { transform: rotate(-3deg); }
+    to { transform: rotate(3deg); }
+  }
+
+  /* SVG Specific Transitions */
+  #bouquet {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .cheek {
+    transition: fill 1s ease-in-out, opacity 1s;
+  }
+</style>
+</head>
+<body>
+
+  <div class="text-container">
+    <div id="msg1" class="msg">Hi lovie</div>
+    <div id="msg2" class="msg">This little bear has something for you 🌸</div>
+    <div id="msg3" class="msg">Iloveyou hehe</div>
+  </div>
+
+  <div id="bear-container">
+    <svg class="bear-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+      
+      <ellipse cx="70" cy="225" rx="20" ry="15" fill="#5c3a21"/>
+      <ellipse cx="130" cy="225" rx="20" ry="15" fill="#5c3a21"/>
+
+      <circle cx="55" cy="65" r="22" fill="#8B5A2B"/>
+      <circle cx="55" cy="65" r="12" fill="#D2B48C"/>
+      <circle cx="145" cy="65" r="22" fill="#8B5A2B"/>
+      <circle cx="145" cy="65" r="12" fill="#D2B48C"/>
+
+      <ellipse cx="100" cy="165" rx="65" ry="75" fill="#8B5A2B"/>
+      <ellipse cx="100" cy="175" rx="45" ry="55" fill="#a06d3a" opacity="0.3"/> 
+
+      <ellipse cx="100" cy="100" rx="60" ry="55" fill="#8B5A2B"/>
+
+      <circle cx="75" cy="90" r="9" fill="#000"/>
+      <circle cx="72" cy="87" r="3.5" fill="#FFF"/>
+      <circle cx="78" cy="93" r="1.5" fill="#FFF"/>
+      
+      <circle cx="125" cy="90" r="9" fill="#000"/>
+      <circle cx="122" cy="87" r="3.5" fill="#FFF"/>
+      <circle cx="128" cy="93" r="1.5" fill="#FFF"/>
+
+      <ellipse cx="100" cy="112" rx="22" ry="15" fill="#D2B48C"/>
+      <ellipse cx="100" cy="106" rx="7" ry="5" fill="#332211"/>
+      <path d="M 92 114 Q 100 122 108 114" stroke="#332211" fill="transparent" stroke-width="2.5" stroke-linecap="round"/>
+
+      <ellipse class="cheek" id="left-cheek" cx="60" cy="105" rx="12" ry="7" fill="#FFB6C1" opacity="0.5"/>
+      <ellipse class="cheek" id="right-cheek" cx="140" cy="105" rx="12" ry="7" fill="#FFB6C1" opacity="0.5"/>
+
+      <g id="arms-down">
+        <ellipse cx="35" cy="160" rx="16" ry="35" fill="#8B5A2B" transform="rotate(25 35 160)"/>
+        <ellipse cx="165" cy="160" rx="16" ry="35" fill="#8B5A2B" transform="rotate(-25 165 160)"/>
+      </g>
+
+      <g id="bouquet">
+        <path d="M 85 140 L 115 140 L 105 190 L 95 190 Z" fill="#ffd1dc" stroke="#fff" stroke-width="2"/>
+        <circle cx="100" cy="130" r="16" fill="#ff4d4d"/>
+        <circle cx="85" cy="140" r="14" fill="#ff66b3"/>
+        <circle cx="115" cy="140" r="14" fill="#ff66b3"/>
+        <circle cx="92" cy="125" r="12" fill="#ffcccc"/>
+        <circle cx="108" cy="125" r="12" fill="#ffcccc"/>
+        <circle cx="100" cy="145" r="10" fill="#ff1a1a"/>
+        
+        <polygon points="120,115 122,122 129,124 122,126 120,133 118,126 111,124 118,122" fill="#FFF"/>
+
+        <ellipse cx="80" cy="160" rx="18" ry="14" fill="#8B5A2B" transform="rotate(-15 80 160)"/>
+        <ellipse cx="120" cy="160" rx="18" ry="14" fill="#8B5A2B" transform="rotate(15 120 160)"/>
+      </g>
+    </svg>
+  </div>
+
+<script>
+  // --- Create Background Elements ---
+  function createDecorations() {
+    // Generate Floating Hearts
+    for(let i=0; i<25; i++) {
+      let heart = document.createElement('div');
+      heart.innerHTML = '❤';
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      document.body.appendChild(heart);
+    }
+
+    // Generate Glowing Sparkles
+    for(let i=0; i<30; i++) {
+      let sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.width = (Math.random() * 4 + 2) + 'px';
+      sparkle.style.height = sparkle.style.width;
+      sparkle.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(sparkle);
+    }
+  }
+
+  // Generate Falling Petals (optional cute effect)
+  function createPetals() {
+    for(let i=0; i<15; i++) {
+      let petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      petal.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(petal);
+    }
+  }
+
+  createDecorations();
+  createPetals();
+
+  // --- Animation Sequence Logic ---
+  const bearSvg = document.querySelector('.bear-svg');
+  const bouquet = document.getElementById('bouquet');
+  const armsDown = document.getElementById('arms-down');
+  const cheeks = document.querySelectorAll('.cheek');
+  const msg1 = document.getElementById('msg1');
+  const msg2 = document.getElementById('msg2');
+  const msg3 = document.getElementById('msg3');
+
+  // Sequence triggers based on time
+  setTimeout(() => {
+    // 1. Bear reaches center. Stop bouncing, start standing still.
+    bearSvg.style.animation = 'none';
+    
+    setTimeout(() => {
+      // 2. Bear wiggles shyly
+      bearSvg.style.animation = 'wiggle 1s ease-in-out';
+      
+      setTimeout(() => {
+        // 3. Reveal flowers, hide side arms, blush heavily
+        armsDown.style.display = 'none';
+        bouquet.style.opacity = '1';
+        bouquet.style.transform = 'translateY(0)';
+        
+        cheeks.forEach(cheek => {
+          cheek.setAttribute('fill', '#ff1a66'); // Brighter pink
+          cheek.setAttribute('opacity', '0.9');
+        });
+        
+        // 4. Trigger Text 1: "Hi lovie"
+        setTimeout(() => {
+          msg1.classList.add('visible');
+          
+          // 5. Trigger Text 2: "This little bear has something for you 🌸"
+          setTimeout(() => {
+            msg2.classList.add('visible');
+            
+            // 6. Trigger Text 3: "iloveyou hehehe✨"
+            setTimeout(() => {
+              msg3.classList.add('visible');
+              
+              // 7. Add gentle sway loop at the very end
+              bearSvg.style.animation = 'sway 2.5s ease-in-out infinite alternate';
+              
+            }, 2500);
+          }, 2500);
+        }, 1500);
+        
+      }, 1000);
+      
+    }, 500);
+  }, 4000); // 4000ms is exactly when the walkIn animation finishes
+
+</script>
+</body>
+</html>
